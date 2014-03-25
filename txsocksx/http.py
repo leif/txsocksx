@@ -21,6 +21,7 @@ class _SOCKSAgent(Agent):
     def __init__(self, *a, **kw):
         self.proxyEndpoint = kw.pop('proxyEndpoint')
         self.endpointArgs = kw.pop('endpointArgs', {})
+        assert hasattr(Agent,'_getEndpoint'), "txsocksx.http requires Twisted >= 12.1"
         super(_SOCKSAgent, self).__init__(*a, **kw)
 
     def _getEndpoint(self, scheme, host, port):
